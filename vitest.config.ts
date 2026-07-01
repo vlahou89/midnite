@@ -1,36 +1,34 @@
-import { defineConfig } from 'vitest/config';
-import vue from '@vitejs/plugin-vue';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
+import { defineConfig } from 'vitest/config'
+import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
   test: {
-    projects: [{
-      extends: true,
-      test: {
-        environment: 'jsdom',
-        setupFiles: ['./src/test-utils/setup.ts']
-      }
-    }, {
-      extends: true,
-      plugins: [
-      storybookTest({
-        configDir: path.join(dirname, '.storybook')
-      })],
-      test: {
-        name: 'storybook',
-        browser: {
-          enabled: true,
-          headless: true,
-          provider: 'playwright',
-          instances: [{
-            browser: 'chromium'
-          }]
-        }
-      }
-    }]
-  }
-});
+    environment: 'jsdom',
+    setupFiles: ['./src/test-utils/setup.ts'],
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/storybook-static/**',
+      '**/*.stories.{ts,tsx}',
+    ],
+    coverage: {
+      provider: 'v8',
+      include: ['src/**/*.{ts,vue}'],
+      exclude: [
+        'src/main.ts',
+        'src/types/**',
+        'src/**/*.stories.*',
+        'src/test-utils/**',
+        'storybook-static/**',
+      ],
+      reporter: ['text', 'html'],
+      thresholds: {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
+    },
+  },
+})
