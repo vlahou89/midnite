@@ -1,63 +1,87 @@
-<template>
-  <div class="max-w-254 mx-auto text-white">
-    <header class="bg-carbon-950 p-6 border-b border-carbon-600 mb-6">
-        <img src="https://www.midnite.com/images/brands/midnite/logo-horizontal-2025-white.svg" class="h-6">
-    </header>
-
-    <main class="flex flex-col space-y-4 lg:flex-row lg:space-x-4 p-4 lg:px-0">
-
-      <div class="flex-col flex-grow-1">
-          <h1>API RESPONSE:</h1>
-          {{ containers }}
-      </div>
-
-      <aside class="bg-carbon-800 flex-shrink-0 lg:w-80 p-4 rounded-xl">
-        <h2 class="font-semibold mb-2 border-b-1 border-carbon-600 pb-2">Betslip</h2>
-        <Betslip />
-      </aside>
-
-
-    </main>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import InPlayContainer from './components/inPlayContainer/InPlayContainer.vue'
 import Betslip from './components/betslip/Betslip.vue'
+import { useBetslipStore } from './stores/betslip'
+import type { Match } from './types'
 
-const containers = ref<any[]>([])
-const apiFiles = ['/api-1.json', '/api-2.json', '/api-3.json', '/api-4.json', '/api-5.json']
-
-let refreshTimer: ReturnType<typeof setInterval> | undefined
-
-const API_TIMEOUT_MS = 2 * 1000 // Feel free to change if annoying during development.
-
-// We rotate through the local api snapshot files on a timer to mimic a live API
-// pushing updated odds. This keeps the demo setup simple while still exercising
-// the UI against changing data, without needing a real backend or websocket feed.
-const fetchContainers = async () => {
-  const randomFile = apiFiles[Math.floor(Math.random() * apiFiles.length)]
-  const res = await fetch(randomFile)
-  const data = await res.json()
-  containers.value = data.containers
+interface InPlayData {
+  type: 'in-play'
+  matches: Match[]
 }
 
-/**
- * On mount, start the interval
- */
+interface ApiResponse {
+  containers: any[]
+}
+
+const containers = ref<any[]>([])
+const betslipStore = useBetslipStore()
+let pollInterval: ReturnType<typeof setInterval>
+
+async function fetchContainers(): Promise<void> {
+  const n = Math.floor(Math.random() * 5) + 1
+  try {
+    const res = await fetch(`/api-${n}.json`)
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const data: ApiResponse = await res.json()
+
+    containers.value = data.containers
+
+    const inPlay = data.containers.find((c: any) => c.type === 'in-play')
+    if (inPlay) {
+      betslipStore.updateAllOdds(inPlay.matches.flatMap((m: any) => m.contracts))
+    }
+  } catch (err) {
+    console.error('[Midnite] Poll error:', err)
+  }
+}
+
+const inPlayContainer = computed<InPlayData | null>(
+  () => containers.value.find((c: any) => c.type === 'in-play') ?? null,
+)
+
 onMounted(() => {
   fetchContainers()
-  refreshTimer = setInterval(fetchContainers, API_TIMEOUT_MS)
+  pollInterval = setInterval(fetchContainers, 5_000)
 })
 
-onUnmounted(( )=> {
-  clearInterval(refreshTimer)
-})
-
+onUnmounted(() => clearInterval(pollInterval))
 </script>
 
-<style>
+<template>
+  <div class="min-h-screen bg-carbon-950 text-white flex flex-col">
+    <!-- Header -->
+    <header class="bg-carbon-950 border-b border-carbon-600 h-14 flex items-center px-6 shrink-0">
+      <img
+        src="https://www.midnite.com/images/brands/midnite/logo-horizontal-2025-white.svg"
+        class="h-6"
+        alt="Midnite"
+        @error="($event.target as HTMLImageElement).style.display = 'none'"
+      />
+    </header>
 
-</style>
+    <!-- Body -->
+    <div class="flex flex-1 min-h-0">
+      <!-- In-play content -->
+      <main class="flex-1 min-w-0">
+        <div v-if="!inPlayContainer" class="p-8 text-gray-400 text-sm text-center">
+          Loading in-play matches…
+        </div>
+        <InPlayContainer v-else :matches="inPlayContainer.matches" />
+      </main>
 
+      <!-- Betslip sidebar — desktop only -->
+      <aside
+        class="hidden md:block w-[300px] shrink-0 bg-carbon-800 border-l border-carbon-700"
+        aria-label="Betslip"
+      >
+        <Betslip />
+      </aside>
+    </div>
 
+    <!-- Betslip — mobile, below content -->
+    <section class="md:hidden bg-carbon-800 border-t border-carbon-700" aria-label="Betslip">
+      <Betslip />
+    </section>
+  </div>
+</template>

@@ -1,29 +1,33 @@
-<template>
-  <pre>{{ betslipStore.betslip }}</pre>
-
-  <!-- Example Betslip Contract. Feel free to move, rename, change etc -->
-  <div class="p-2 bg-carbon-600">
-    <div class="flex flex-row space-x-2 w-full justify-between">
-      <div class="flex flex-col space-y-1">
-        <span class="font-bold">South Africa ODI</span> <!-- Either {home_team} or {away_team} depending on selection -->
-      </div>
-      <div class="flex flex-row space-x-2">
-        <span>1.4</span> <!-- Odds-->
-        <span>-</span> <!-- Odds direction indicator use ▲ for up and ▼ for down -->
-        <button class="text-red-500 font-bold">[Remove]</button> <!-- Use either [Remove] or 'x' - up to you. -->
-      </div>
-    </div>
-    <span class="text-gray-400 text-xs">South Africa ODI vs New Zealand ODI</span> <!-- {home_team} vs {away_team}-->
-  </div>
-
-</template>
-
 <script setup lang="ts">
-import { useBetslipStore } from '@/stores/betslip';
-
-const betslipStore = useBetslipStore()
-
+import { useBetslipStore } from '../../stores/betslip'
+import BetslipItem from './BetslipItem.vue'
+const store = useBetslipStore()
 </script>
 
+<template>
+  <div class="p-4">
+    <h2 class="font-bold text-base mb-3 pb-3 border-b border-carbon-600">Betslip</h2>
 
+    <Transition name="fade" mode="out-in">
+      <p v-if="store.betslip.length === 0" class="text-gray-400 text-sm text-center py-6">
+        Add selections to your betslip
+      </p>
 
+      <div v-else class="flex flex-col gap-2">
+        <BetslipItem v-for="item in store.betslip" :key="item.contractId" :item="item" />
+      </div>
+    </Transition>
+  </div>
+</template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
