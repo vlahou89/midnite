@@ -1,0 +1,554 @@
+{
+    "containers": [
+        {
+            "type": "carousel",
+            "slides": [
+                {
+                    "title": "Bet £20, get 100 free spins",
+                    "link": "https://www.midnite.com",
+                    "banner": "https://assets.midnite.com/cms/w_1536_Banner_Web_Fulh_vs_Ips_17_d247ed6127.png",
+                    "terms": "Odds subject to change. Limited availability. Max stakes and further T&Cs apply."
+                },
+                {
+                    "title": "Play our new casino",
+                    "link": "https://www.midnite.com/casino",
+                    "banner": "https://assets.midnite.com/cms/w_1536_24_02_CC_Banner_Web_2f44e7e02a.jpg",
+                    "terms": "Opt in required. Free Bets valid for 7 days, stake not returned. Staking requirements apply. Odds, market and bet type restrictions apply. Further T&Cs apply."
+                }
+            ]
+        },
+        {
+            "type": "in-play",
+            "matches": [
+                {
+                    "home_team": "South Africa ODI",
+                    "home_score": null,
+                    "home_image_url": null,
+                    "away_team": "New Zealand ODI",
+                    "away_score": null,
+                    "away_image_url": null,
+                    "game_id": 40,
+                    "game_name": "Cricket",
+                    "contracts": [
+                        {
+                            "id": 1658371618,
+                            "odds": "18.9",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1658371619,
+                            "odds": "23.1",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "cricket",
+                    "match_id": 1658371618
+                },
+                {
+                    "home_team": "FlyQuest",
+                    "home_score": "1",
+                    "home_image_url": "https://img.abiosgaming.com/competitors/flyquest-2021-team-logo.png",
+                    "away_team": "TyLoo",
+                    "away_score": "1",
+                    "away_image_url": "https://img.abiosgaming.com/competitors/Tyloo-New1SEP16-Logo.png",
+                    "game_id": 2,
+                    "game_name": "CS:GO",
+                    "contracts": [
+                        {
+                            "id": 1666062348,
+                            "odds": "1.98",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1666062349,
+                            "odds": "1.67",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "csgo",
+                    "match_id": 1666062348
+                },
+                {
+                    "home_team": "Warriors",
+                    "home_score": null,
+                    "home_image_url": null,
+                    "away_team": "Western Province",
+                    "away_score": null,
+                    "away_image_url": null,
+                    "game_id": 40,
+                    "game_name": "Cricket",
+                    "contracts": [
+                        {
+                            "id": 1660301472,
+                            "odds": "1.17",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1660301473,
+                            "odds": "3.36",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "cricket",
+                    "match_id": 1660301472
+                },
+                {
+                    "home_team": "North West Dragons",
+                    "home_score": null,
+                    "home_image_url": null,
+                    "away_team": "The Titans",
+                    "away_score": null,
+                    "away_image_url": null,
+                    "game_id": 40,
+                    "game_name": "Cricket",
+                    "contracts": [
+                        {
+                            "id": 1660347611,
+                            "odds": "2.7",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1660347612,
+                            "odds": "1.3",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "cricket",
+                    "match_id": 1660347611
+                },
+                {
+                    "home_team": "Tundra Esports",
+                    "home_score": "1",
+                    "home_image_url": "https://img.abiosgaming.com/competitors/Tundra-esports-team-logo-.png",
+                    "away_team": "Team Spirit",
+                    "away_score": "2",
+                    "away_image_url": "https://img.abiosgaming.com/casters/team-spirit-new-logo-200-abios.png",
+                    "game_id": 1,
+                    "game_name": "Dota 2",
+                    "contracts": [
+                        {
+                            "id": 1655060368,
+                            "odds": "2.21",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1655060418,
+                            "odds": "1.58",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "dota",
+                    "match_id": 1655060368
+                },
+                {
+                    "home_team": "Merinos Women",
+                    "home_score": null,
+                    "home_image_url": null,
+                    "away_team": "Karsiyaka SK Women",
+                    "away_score": null,
+                    "away_image_url": null,
+                    "game_id": 38,
+                    "game_name": "Volleyball",
+                    "contracts": [
+                        {
+                            "id": 1666516757,
+                            "odds": "1.5",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1666516758,
+                            "odds": "2.48",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "volleyball",
+                    "match_id": 1666516757
+                },
+                {
+                    "home_team": "UNiTY esports",
+                    "home_score": "1",
+                    "home_image_url": "https://assets.midnite.com/teams/unity-logo.png",
+                    "away_team": "ESC Gaming",
+                    "away_score": "1",
+                    "away_image_url": "https://assets.midnite.com/teams/esc-gaming-logo.png",
+                    "game_id": 2,
+                    "game_name": "CS:GO",
+                    "contracts": [
+                        {
+                            "id": 1662148237,
+                            "odds": "3.38",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1662148238,
+                            "odds": "1.32",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "csgo",
+                    "match_id": 1662148237
+                },
+                {
+                    "home_team": "SK Sturm Graz U19",
+                    "home_score": "0",
+                    "home_image_url": null,
+                    "away_team": "Olympiacos U19",
+                    "away_score": "1",
+                    "away_image_url": null,
+                    "game_id": 23,
+                    "game_name": "Football",
+                    "contracts": [
+                        {
+                            "id": 1663213929,
+                            "odds": "16.5",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1663213930,
+                            "odds": "1.17",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "football",
+                    "match_id": 1663213929
+                },
+                {
+                    "home_team": "FC Bayern München U19",
+                    "home_score": "1",
+                    "home_image_url": null,
+                    "away_team": "Internazionale U19",
+                    "away_score": "0",
+                    "away_image_url": null,
+                    "game_id": 23,
+                    "game_name": "Football",
+                    "contracts": [
+                        {
+                            "id": 1663312128,
+                            "odds": "1.62",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1663312129,
+                            "odds": "4.95",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "football",
+                    "match_id": 1663312128
+                },
+                {
+                    "home_team": "Vllaznia Shkodër",
+                    "home_score": "0",
+                    "home_image_url": null,
+                    "away_team": "Partizani Tirana",
+                    "away_score": "0",
+                    "away_image_url": null,
+                    "game_id": 23,
+                    "game_name": "Football",
+                    "contracts": [
+                        {
+                            "id": 1664426841,
+                            "odds": "2.53",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1664426842,
+                            "odds": "3.69",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "football",
+                    "match_id": 1664426841
+                },
+                {
+                    "home_team": "KS Egnatia Rrogozhinë",
+                    "home_score": "2",
+                    "home_image_url": null,
+                    "away_team": "Dinamo Tirana",
+                    "away_score": "0",
+                    "away_image_url": null,
+                    "game_id": 23,
+                    "game_name": "Football",
+                    "contracts": [
+                        {
+                            "id": 1664481716,
+                            "odds": "0.93",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1664481717,
+                            "odds": "28.6",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "football",
+                    "match_id": 1664481716
+                },
+                {
+                    "home_team": "NK Slaven Belupo",
+                    "home_score": "0",
+                    "home_image_url": null,
+                    "away_team": "HNK Gorica",
+                    "away_score": "0",
+                    "away_image_url": null,
+                    "game_id": 23,
+                    "game_name": "Football",
+                    "contracts": [
+                        {
+                            "id": 1659637381,
+                            "odds": "2.05",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1659637382,
+                            "odds": "3.78",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "football",
+                    "match_id": 1659637381
+                },
+                {
+                    "home_team": "Canon Yaoundé",
+                    "home_score": "2",
+                    "home_image_url": null,
+                    "away_team": "Yong Sport Academy",
+                    "away_score": "0",
+                    "away_image_url": null,
+                    "game_id": 23,
+                    "game_name": "Football",
+                    "contracts": [
+                        {
+                            "id": 1668373497,
+                            "odds": "0.91",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1668373498,
+                            "odds": "56.1",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "football",
+                    "match_id": 1668373497
+                },
+                {
+                    "home_team": "Shabab Al-Ahli Dubai FC",
+                    "home_score": "0",
+                    "home_image_url": null,
+                    "away_team": "Al-Sharjah",
+                    "away_score": "0",
+                    "away_image_url": null,
+                    "game_id": 23,
+                    "game_name": "Football",
+                    "contracts": [
+                        {
+                            "id": 1668606366,
+                            "odds": "2.2",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1668606367,
+                            "odds": "3.24",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "football",
+                    "match_id": 1668606366
+                },
+                {
+                    "home_team": "Adama Kenema FC",
+                    "home_score": "1",
+                    "home_image_url": null,
+                    "away_team": "Arba Minch City FC",
+                    "away_score": "1",
+                    "away_image_url": null,
+                    "game_id": 23,
+                    "game_name": "Football",
+                    "contracts": [
+                        {
+                            "id": 1668449782,
+                            "odds": "5.85",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1668449783,
+                            "odds": "2.1",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "football",
+                    "match_id": 1668449782
+                },
+                {
+                    "home_team": "ŽKK Studio Zagreb Women",
+                    "home_score": "51",
+                    "home_image_url": null,
+                    "away_team": "KK Orlovi Women",
+                    "away_score": "33",
+                    "away_image_url": null,
+                    "game_id": 25,
+                    "game_name": "Basketball",
+                    "contracts": [
+                        {
+                            "id": 1666862707,
+                            "odds": "1.16",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1666862708,
+                            "odds": "6.75",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "basketball",
+                    "match_id": 1666862707
+                },
+                {
+                    "home_team": "WKK Wroclaw",
+                    "home_score": "12",
+                    "home_image_url": null,
+                    "away_team": "Astoria Bydgoszcz",
+                    "away_score": "12",
+                    "away_image_url": null,
+                    "game_id": 25,
+                    "game_name": "Basketball",
+                    "contracts": [
+                        {
+                            "id": 1665041620,
+                            "odds": "2.03",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1665041621,
+                            "odds": "1.68",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "basketball",
+                    "match_id": 1665041620
+                },
+                {
+                    "home_team": "SBS Ostrava Women",
+                    "home_score": "12",
+                    "home_image_url": null,
+                    "away_team": "Levhartice Chomutov Women",
+                    "away_score": "8",
+                    "away_image_url": null,
+                    "game_id": 25,
+                    "game_name": "Basketball",
+                    "contracts": [
+                        {
+                            "id": 1665462312,
+                            "odds": "1.25",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1665462313,
+                            "odds": "4.32",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "basketball",
+                    "match_id": 1665462312
+                },
+                {
+                    "home_team": "Tennessee Volunteers Women",
+                    "home_score": "5",
+                    "home_image_url": null,
+                    "away_team": "Texas A&M Aggies Women",
+                    "away_score": "8",
+                    "away_image_url": null,
+                    "game_id": 25,
+                    "game_name": "Basketball",
+                    "contracts": [
+                        {
+                            "id": 1668558113,
+                            "odds": "0.95",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1668558114,
+                            "odds": "8.25",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "basketball",
+                    "match_id": 1668558113
+                },
+                {
+                    "home_team": "BK Slovan Bratislava Women",
+                    "home_score": "10",
+                    "home_image_url": null,
+                    "away_team": "MBK Ruzomberok Women",
+                    "away_score": "9",
+                    "away_image_url": null,
+                    "game_id": 25,
+                    "game_name": "Basketball",
+                    "contracts": [
+                        {
+                            "id": 1668606790,
+                            "odds": "12.1",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1668606791,
+                            "odds": "0.91",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "basketball",
+                    "match_id": 1668606790
+                },
+                {
+                    "home_team": "Apogee Esports",
+                    "home_score": "0",
+                    "home_image_url": null,
+                    "away_team": "Rhyno Esports",
+                    "away_score": "0",
+                    "away_image_url": "https://img.abiosgaming.com/competitors/teamRhynoEsports.png",
+                    "game_id": 2,
+                    "game_name": "CS:GO",
+                    "contracts": [
+                        {
+                            "id": 1594309627,
+                            "odds": "1.26",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1594309628,
+                            "odds": "2.89",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "csgo",
+                    "match_id": 1594309627
+                },
+                {
+                    "home_team": "Johnny Speeds",
+                    "home_score": "0",
+                    "home_image_url": null,
+                    "away_team": "Leo Team",
+                    "away_score": "1",
+                    "away_image_url": null,
+                    "game_id": 2,
+                    "game_name": "CS:GO",
+                    "contracts": [
+                        {
+                            "id": 1659334998,
+                            "odds": "3.36",
+                            "team": "home"
+                        },
+                        {
+                            "id": 1659334999,
+                            "odds": "1.17",
+                            "team": "away"
+                        }
+                    ],
+                    "game_image_key": "csgo",
+                    "match_id": 1659334998
+                }
+            ]
+        }
+    ]
+}

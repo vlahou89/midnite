@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import './base.css';
+
+
+/**
+The colours commented out are part of our usual colour pallet, but are not used in this test
+**/
+@theme {
+  /* --color-carbon-50: #F7F7F8; */
+  /* --color-carbon-100: #C3C4C6; */
+  /* --color-carbon-200: #95989D; */
+  /* --color-carbon-300: #66696B; */
+  /* --color-carbon-400: #484A4C; */
+  /* --color-carbon-500: #3B3D3F; */
+  --color-carbon-600: #2C2E30;
+  --color-carbon-700: #252728;
+  --color-carbon-800: #1D1F20;
+  /* --color-carbon-900: #181B1C; */
+  --color-carbon-950: #161718;
+}
+
