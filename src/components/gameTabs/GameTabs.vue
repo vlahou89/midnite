@@ -20,7 +20,7 @@ defineEmits<{ select: [name: string] }>()
       role="tab"
       type="button"
       :aria-selected="selectedGame === game.name"
-      class="flex flex-col items-center gap-1.5 px-4 py-2.5 rounded shrink-0 min-w-[80px] transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      class="basis-0 flex-1 flex flex-col items-center gap-1.5 px-4 py-2.5 rounded transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white min-w-0"
       :class="
         selectedGame === game.name
           ? 'bg-white text-black'
@@ -36,7 +36,7 @@ defineEmits<{ select: [name: string] }>()
         />
 
         <span
-          class="absolute -top-2 -right-3 bg-cyan-800 text-white text-[10px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-[3px]"
+          class="absolute -top-2 -right-3 bg-blue-600 text-white text-[10px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-[3px]"
         >
           {{ game.matchCount }}
         </span>

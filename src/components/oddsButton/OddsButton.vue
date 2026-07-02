@@ -18,7 +18,7 @@ const teamLabel = computed(() =>
     :aria-pressed="selected"
     :aria-label="`${teamLabel} — odds ${contract.odds}`"
     class="min-w-[80px] rounded py-3 px-4 font-semibold text-sm transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-    :class="selected ? 'bg-white text-black' : 'bg-carbon-700 text-lime-400 hover:bg-carbon-600'"
+    :class="selected ? 'bg-white text-black' : 'bg-carbon-700 text-green-400 hover:bg-carbon-600'"
     @click="store.toggle(contract, match)"
   >
     {{ contract.odds }}

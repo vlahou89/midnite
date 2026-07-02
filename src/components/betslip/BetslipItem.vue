@@ -21,20 +21,18 @@ const indicator = computed(() =>
       <div class="flex-1 min-w-0">
         <p class="font-bold text-sm text-white leading-tight truncate">{{ item.teamName }}</p>
 
-        <p class="text-gray-400 text-xs mt-1 truncate">{{ item.matchTitle }}</p>
+        <p class="text-carbon-400 text-xs mt-1 truncate">{{ item.matchTitle }}</p>
       </div>
 
       <div class="flex items-center gap-1.5 shrink-0">
-        <span class="font-bold text-sm tabular-nums text-gray-400">{{ item.currentOdds }}</span>
+        <span class="font-bold text-sm tabular-nums text-carbon-400">{{ item.currentOdds }}</span>
 
         <span
           class="text-sm font-bold w-4 text-center"
           :class="{
             'text-green-400': direction === 'up',
-
-            'text-red-400': direction === 'down',
-
-            'text-gray-400': direction === 'neutral',
+            'text-red-500': direction === 'down',
+            'text-carbon-500': direction === 'neutral',
           }"
           :aria-label="
             direction === 'up' ? 'Odds up' : direction === 'down' ? 'Odds down' : 'Unchanged'

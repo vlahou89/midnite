@@ -39,10 +39,10 @@ describe('BetslipItem', () => {
     expect(setup('1.50', '2.00').text()).toContain('2.00')
   })
 
-  it('shows – with text-gray-400 when odds unchanged', () => {
+  it('shows – with text-carbon-500 when odds unchanged', () => {
     const w = setup('1.50')
     expect(w.text()).toContain('–')
-    expect(w.find('.text-gray-400').exists()).toBe(true)
+    expect(w.find('.text-carbon-500').exists()).toBe(true)
   })
 
   it('shows ▲ with text-green-400 when current > initial', () => {
@@ -51,17 +51,17 @@ describe('BetslipItem', () => {
     expect(w.find('.text-green-400').exists()).toBe(true)
   })
 
-  it('shows ▼ with text-red-400 when current < initial', () => {
+  it('shows ▼ with text-red-500 when current < initial', () => {
     const w = setup('2.00', '1.50')
     expect(w.text()).toContain('▼')
-    expect(w.find('.text-red-400').exists()).toBe(true)
+    expect(w.find('.text-red-500').exists()).toBe(true)
   })
 
   // Exact spec examples
   it('spec a) 1.1 → 1.3 → 1.1 = neutral (–)', () => {
     const w = setup('1.1', '1.3', '1.1')
     expect(w.text()).toContain('–')
-    expect(w.find('.text-gray-400').exists()).toBe(true)
+    expect(w.find('.text-carbon-500').exists()).toBe(true)
   })
 
   it('spec b) 1.1 → 1.3 → 1.4 = up (▲)', () => {

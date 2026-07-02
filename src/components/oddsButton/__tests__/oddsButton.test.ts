@@ -34,9 +34,9 @@ describe('OddsButton', () => {
     expect(mountBtn(1).w.text()).toBe('1.67')
   })
 
-  it('has lime text + dark bg when unselected', () => {
+  it('has green text + dark bg when unselected', () => {
     const { w } = mountBtn()
-    expect(w.classes()).toContain('text-lime-400')
+    expect(w.classes()).toContain('text-green-400')
     expect(w.classes()).toContain('bg-carbon-700')
   })
 

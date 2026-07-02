@@ -7,7 +7,7 @@ defineProps<{ match: Match }>()
 </script>
 
 <template>
-  <div class="bg-carbon-800 px-4 py-3">
+  <div class="bg-carbon-800 rounded-3xl border border-carbon-700 px-4 py-3">
     <div class="flex items-center gap-4">
       <div class="flex-1 min-w-0">
         <div class="flex items-center gap-2 py-0.5">

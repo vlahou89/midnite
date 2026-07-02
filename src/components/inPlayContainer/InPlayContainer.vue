@@ -12,14 +12,16 @@ const { games, selectedGame, filteredMatches } = useInPlay(toRef(props, 'matches
 </script>
 
 <template>
-  <div>
-    <GameTabs :games="games" :selected-game="selectedGame" @select="selectedGame = $event" />
+  <div class="space-y-4">
+    <div class="bg-carbon-800 rounded-3xl border border-carbon-700 p-3">
+      <GameTabs :games="games" :selected-game="selectedGame" @select="selectedGame = $event" />
+    </div>
 
-    <div class="flex flex-col gap-0.5 mt-0.5">
+    <div class="space-y-2">
       <MatchRow v-for="match in filteredMatches" :key="match.match_id" :match="match" />
     </div>
 
-    <div v-if="filteredMatches.length === 0" class="p-8 text-gray-400 text-sm text-center">
+    <div v-if="filteredMatches.length === 0" class="p-8 text-carbon-400 text-sm text-center">
       No live matches right now.
     </div>
   </div>
