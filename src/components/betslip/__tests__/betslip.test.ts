@@ -1,5 +1,9 @@
 import { describe, it, expect, beforeEach } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { createPinia, setActivePinia } from 'pinia'
 import { setActivePinia, createPinia } from 'pinia'
+import { expectNoA11yViolations } from '../../../test-utils/a11y'
+import BetslipItem from '../BetslipItem.vue'
 import { useBetslipStore } from '../../../stores/betslip'
 import { makeMatch } from '../../../test-utils/fixtures'
 
@@ -222,5 +226,50 @@ describe('useBetslipStore', () => {
     it('returns neutral for unknown contractId', () => {
       expect(useBetslipStore().getDirection(9999)).toBe('neutral')
     })
+  })
+})
+
+describe('BetslipItem — accessibility', () => {
+  let pinia: ReturnType<typeof createPinia>
+  let store: ReturnType<typeof useBetslipStore>
+ 
+  beforeEach(() => {
+    pinia = createPinia()
+    setActivePinia(pinia)
+    store = useBetslipStore()
+  })
+ 
+  const mountWithState = (initial: string, ...polls: string[]) => {
+    const match = makeMatch({
+      contracts: [
+        { id: 1, odds: initial, team: 'home' },
+        { id: 2, odds: '9.99', team: 'away' },
+      ],
+    })
+    store.add(match.contracts[0], match)
+    polls.forEach((odds) => store.updateAllOdds([{ id: 1, odds }]))
+    return mount(BetslipItem, {
+      global: { plugins: [pinia] },
+      props: { item: store.betslip[0] },
+      attachTo: document.body,
+    })
+  }
+ 
+  it('has no violations — neutral (–)', async () => {
+    const wrapper = mountWithState('1.50')
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
+  })
+ 
+  it('has no violations — odds up (▲)', async () => {
+    const wrapper = mountWithState('1.50', '2.00')
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
+  })
+ 
+  it('has no violations — odds down (▼)', async () => {
+    const wrapper = mountWithState('2.00', '1.50')
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
   })
 })

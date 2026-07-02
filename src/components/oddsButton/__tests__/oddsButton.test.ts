@@ -5,6 +5,7 @@ import { nextTick } from 'vue'
 import OddsButton from '../OddsButton.vue'
 import { useBetslipStore } from '../../../stores/betslip'
 import { makeMatch } from '../../../test-utils/fixtures'
+import { expectNoA11yViolations } from '../../../test-utils/a11y'
 
 describe('OddsButton', () => {
   let pinia: ReturnType<typeof createPinia>
@@ -105,5 +106,39 @@ describe('OddsButton', () => {
 
   it('is a <button> element', () => {
     expect(mountBtn().w.element.tagName).toBe('BUTTON')
+  })
+})
+
+describe('OddsButton — accessibility', () => {
+  let pinia: ReturnType<typeof createPinia>
+ 
+  beforeEach(() => {
+    pinia = createPinia()
+    setActivePinia(pinia)
+  })
+ 
+  it('has no violations in unselected state', async () => {
+    const match = makeMatch()
+    const wrapper = mount(OddsButton, {
+      global: { plugins: [pinia] },
+      props: { contract: match.contracts[0], match },
+      attachTo: document.body,
+    })
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
+  })
+ 
+  it('has no violations in selected state', async () => {
+    const match = makeMatch()
+    const store = useBetslipStore()
+    store.add(match.contracts[0], match)
+    const wrapper = mount(OddsButton, {
+      global: { plugins: [pinia] },
+      props: { contract: match.contracts[0], match },
+      attachTo: document.body,
+    })
+    await nextTick()
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
   })
 })

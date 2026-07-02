@@ -1,7 +1,11 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
+import { createPinia, setActivePinia } from 'pinia'
+import { mount, flushPromises } from '@vue/test-utils'
 import { ref, nextTick } from 'vue'
 import { useInPlay } from '../../../composables/useInPlay'
 import { makeMatch, makeMatches } from '../../../test-utils/fixtures'
+import { expectNoA11yViolations } from '../../../test-utils/a11y'
+import InPlayContainer from '../InPlayContainer.vue'
 
 describe('useInPlay', () => {
   describe('games computed', () => {
@@ -121,5 +125,51 @@ describe('useInPlay', () => {
       await nextTick()
       expect(filteredMatches.value).toHaveLength(1)
     })
+  })
+})
+
+
+
+describe('InPlayContainer — accessibility', () => {
+  let pinia: ReturnType<typeof createPinia>
+ 
+  beforeEach(() => {
+    pinia = createPinia()
+    setActivePinia(pinia)
+  })
+ 
+  it('has no violations with multiple games', async () => {
+    const wrapper = mount(InPlayContainer, {
+      global: { plugins: [pinia] },
+      props: { matches: makeMatches() },
+      attachTo: document.body,
+    })
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
+  })
+ 
+  it('has no violations in empty state', async () => {
+    const wrapper = mount(InPlayContainer, {
+      global: { plugins: [pinia] },
+      props: { matches: [] },
+      attachTo: document.body,
+    })
+    await flushPromises()
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
+  })
+ 
+  it('has no violations after switching tabs', async () => {
+    const wrapper = mount(InPlayContainer, {
+      global: { plugins: [pinia] },
+      props: { matches: makeMatches() },
+      attachTo: document.body,
+    })
+    await wrapper
+      .findAll('button')
+      .find((b) => b.text().includes('CS:GO'))!
+      .trigger('click')
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
   })
 })

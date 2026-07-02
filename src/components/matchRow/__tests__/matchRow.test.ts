@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
 import MatchRow from '../matchRow.vue'
 import { makeMatch } from '../../../test-utils/fixtures'
+import { expectNoA11yViolations } from '../../../test-utils/a11y'
 
 describe('matchRow', () => {
   let pinia: ReturnType<typeof createPinia>
@@ -79,5 +80,46 @@ describe('matchRow', () => {
 
   it('has a flex md:hidden container for mobile odds', () => {
     expect(mount_().find('.flex.md\\:hidden').exists()).toBe(true)
+  })
+})
+
+describe('matchRow — accessibility', () => {
+  let pinia: ReturnType<typeof createPinia>
+ 
+  beforeEach(() => {
+    pinia = createPinia()
+    setActivePinia(pinia)
+  })
+ 
+  it('has no violations with scores and images', async () => {
+    const wrapper = mount(MatchRow, {
+      global: { plugins: [pinia] },
+      props: { match: makeMatch() },
+      attachTo: document.body,
+    })
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
+  })
+ 
+  it('has no violations when scores and images are null', async () => {
+    const wrapper = mount(MatchRow, {
+      global: { plugins: [pinia] },
+      props: {
+        match: makeMatch({ home_score: null, away_score: null, home_image_url: null, away_image_url: null }),
+      },
+      attachTo: document.body,
+    })
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
+  })
+ 
+  it('has no violations when score is "0"', async () => {
+    const wrapper = mount(MatchRow, {
+      global: { plugins: [pinia] },
+      props: { match: makeMatch({ home_score: '0', away_score: '0' }) },
+      attachTo: document.body,
+    })
+    await expectNoA11yViolations(wrapper.element)
+    wrapper.unmount()
   })
 })

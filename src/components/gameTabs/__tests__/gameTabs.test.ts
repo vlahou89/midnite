@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import GameTabs from '../GameTabs.vue'
 import type { GameInfo } from '../../../types'
+import { expectNoA11yViolations } from '../../../test-utils/a11y'
 
 const games: GameInfo[] = [
   { name: 'Basketball', imageKey: 'basketball', matchCount: 5 },
@@ -108,5 +109,15 @@ describe('GameTabs', () => {
     mount_()
       .findAll('button')
       .forEach((b) => expect(b.attributes('role')).toBe('tab'))
+  })
+
+  it('has no violations when a tab is selected', async () => {
+      const wrapper = mount(GameTabs, {
+        props: { games, selectedGame: 'CS:GO' },
+        attachTo: document.body,
+      })
+  
+      await expectNoA11yViolations(wrapper.element)
+      wrapper.unmount()
   })
 })
