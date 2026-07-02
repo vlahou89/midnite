@@ -19,7 +19,7 @@ const indicator = computed(() =>
       </div>
 
       <div class="flex items-center gap-1.5 shrink-0">
-        <span class="font-bold text-sm tabular-nums">{{ item.currentOdds }}</span>
+        <span class="font-bold text-sm tabular-nums text-gray-400">{{ item.currentOdds }}</span>
 
         <span
           class="text-sm font-bold w-4 text-center"

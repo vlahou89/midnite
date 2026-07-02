@@ -3,7 +3,6 @@ import '../src/assets/main.css'
 
 const preview: Preview = {
   parameters: {
-    // Match the app's dark carbon background
     backgrounds: {
       default: 'carbon',
       values: [
@@ -13,7 +12,25 @@ const preview: Preview = {
       ],
     },
 
-    actions: { argTypesRegex: '^on[A-Z].*' },
+    a11y: {
+      context: '#storybook-root',
+      config: {
+        rules: [
+          { id: 'color-contrast', enabled: true },
+          { id: 'aria-required-attr', enabled: true },
+          { id: 'aria-valid-attr', enabled: true },
+          { id: 'button-name', enabled: true },
+          { id: 'image-alt', enabled: true },
+          { id: 'label', enabled: true },
+        ],
+      },
+      options: {
+        runOnly: {
+          type: 'tag',
+          values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'best-practice'],
+        },
+      },
+    },
 
     controls: {
       matchers: {
@@ -21,16 +38,8 @@ const preview: Preview = {
         date: /date$/i,
       },
     },
-
-    a11y: {
-      // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
-      // 'off' - skip a11y checks entirely
-      test: 'todo',
-    },
   },
-
-  // Fresh Pinia instance per story — prevents state leaking between stories
+  hideNoControlsWarning: true,
   decorators: [
     () => ({
       setup() {

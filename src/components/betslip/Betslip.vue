@@ -9,7 +9,7 @@ const store = useBetslipStore()
     <h2 class="font-bold text-base mb-3 pb-3 border-b border-carbon-600">Betslip</h2>
 
     <Transition name="fade" mode="out-in">
-      <p v-if="store.betslip.length === 0" class="text-gray-400 text-sm text-center py-6">
+      <p v-if="store.betslip.length === 0" class="text-gray-500 text-sm text-center py-6">
         Add selections to your betslip
       </p>
 
@@ -19,15 +19,3 @@ const store = useBetslipStore()
     </Transition>
   </div>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.15s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

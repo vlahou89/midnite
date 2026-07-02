@@ -22,7 +22,7 @@ const csgoMatch: Match = {
 }
 
 const cricketMatch: Match = {
-  home_team: 'ŽKK Studio Zagreb Women',
+  home_team: 'ZKK Studio Zagreb Women',
   away_team: 'New Zealand ODI',
   home_score: null,
   away_score: null,
@@ -53,7 +53,7 @@ export const Empty: Story = {
 }
 
 export const SingleSelection: Story = {
-  name: 'Single Selection — Neutral',
+  name: 'Single Selection - Neutral',
   decorators: [
     () => ({
       setup() {
@@ -84,7 +84,7 @@ export const MultipleSelections: Story = {
 }
 
 export const WithOddsMovement: Story = {
-  name: 'With Odds Movement (▲ ▼ –)',
+  name: 'With Odds Movement',
   decorators: [
     () => ({
       setup() {
@@ -95,8 +95,9 @@ export const WithOddsMovement: Story = {
         store.add(csgoMatch.contracts[1], csgoMatch)
         store.add(cricketMatch.contracts[0], cricketMatch)
         store.updateAllOdds([
-          { id: 1, odds: '2.50' }, // FlyQuest ▲
-          { id: 2, odds: '1.20' }, // TyLoo ▼        ])
+          { id: 1, odds: '2.50' },
+          { id: 2, odds: '1.20' },
+        ])
       },
       template: '<story />',
     }),
