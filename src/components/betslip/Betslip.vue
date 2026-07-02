@@ -2,7 +2,6 @@
 import { useBetslipStore } from '../../stores/betslip'
 import BetslipItem from './BetslipItem.vue'
 
-// The betslip store holds the selected contracts and their current odds state.
 const store = useBetslipStore()
 </script>
 
@@ -11,13 +10,27 @@ const store = useBetslipStore()
     <h2 class="font-bold text-base mb-3 pb-3 border-b border-carbon-600">Betslip</h2>
 
     <Transition name="fade" mode="out-in">
-      <p v-if="store.betslip.length === 0" class="text-gray-500 text-sm text-center py-6">
-        Add selections to your betslip
+        <p v-if="store.betslip.length === 0" class="text-carbon-400 text-sm text-center py-6">
       </p>
 
       <div v-else class="flex flex-col gap-2">
-        <BetslipItem v-for="item in store.betslip" :key="item.contractId" :item="item" />
+        <BetslipItem
+          v-for="item in store.betslip"
+          :key="item.contractId"
+          :item="item"
+        />
       </div>
     </Transition>
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>~

@@ -19,13 +19,13 @@ const indicator = computed(() =>
   <div class="bg-carbon-600 rounded p-3">
     <div class="flex items-start gap-2">
       <div class="flex-1 min-w-0">
-        <p class="font-bold text-sm text-white leading-tight truncate">{{ item.teamName }}</p>
+        <p class="font-bold text-sm text-carbon-50 leading-tight truncate">{{ item.teamName }}</p>
 
-        <p class="text-carbon-400 text-xs mt-1 truncate">{{ item.matchTitle }}</p>
+        <p class="text-carbon-200 text-xs mt-1 truncate">{{ item.matchTitle }}</p>
       </div>
 
       <div class="flex items-center gap-1.5 shrink-0">
-        <span class="font-bold text-sm tabular-nums text-carbon-400">{{ item.currentOdds }}</span>
+        <span class="font-bold text-sm tabular-nums text-carbon1400">{{ item.currentOdds }}</span>
 
         <span
           class="text-sm font-bold w-4 text-center"

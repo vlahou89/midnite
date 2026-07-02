@@ -72,7 +72,7 @@ onUnmounted(() => clearInterval(pollInterval))
     </header>
 
     <!-- Body -->
-    <div class="flex flex-1 min-h-0 px-6 py-6 gap-6 max-w-[1480px] mx-auto w-full">
+    <div class="flex flex-1 min-h-0 px-2 py-6 gap-6 max-w-[1480px] mx-auto w-full">
       <!-- In-play content -->
       <main class="flex-1 min-w-0 space-y-4">
         <div v-if="!inPlayContainer" class="p-8 text-carbon-400 text-sm text-center">

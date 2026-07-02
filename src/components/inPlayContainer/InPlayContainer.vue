@@ -1,27 +1,35 @@
 <script setup lang="ts">
 import { toRef } from 'vue'
 import GameTabs from '../gameTabs/GameTabs.vue'
-import MatchRow from '../matchRow/MatchRow.vue'
-import { useInPlay } from '../../composables/useInPlay.ts'
-import type { Match } from '../../types/index.ts'
+import MatchRow from '../matchRow/matchRow.vue'
+import { useInPlay } from '../../composables/useInPlay'
+import type { Match } from '../../types'
 
 const props = defineProps<{ matches: Match[] }>()
-
-// Keep the matches prop reactive by forwarding it as a ref to the composable.
 const { games, selectedGame, filteredMatches } = useInPlay(toRef(props, 'matches'))
 </script>
 
 <template>
-  <div class="space-y-4">
-    <div class="bg-carbon-800 rounded-3xl border border-carbon-700 p-3">
-      <GameTabs :games="games" :selected-game="selectedGame" @select="selectedGame = $event" />
+  <div>
+    <GameTabs
+      :games="games"
+      :selected-game="selectedGame"
+      @select="selectedGame = $event"
+    />
+
+    <!-- gap-2 between rounded cards + px-3 to align with tab strip -->
+    <div class="flex flex-col gap-2 px-3 py-3">
+      <MatchRow
+        v-for="match in filteredMatches"
+        :key="match.match_id"
+        :match="match"
+      />
     </div>
 
-    <div class="space-y-2">
-      <MatchRow v-for="match in filteredMatches" :key="match.match_id" :match="match" />
-    </div>
-
-    <div v-if="filteredMatches.length === 0" class="p-8 text-carbon-400 text-sm text-center">
+    <div
+      v-if="filteredMatches.length === 0"
+      class="p-8 text-carbon-400 text-sm text-center"
+    >
       No live matches right now.
     </div>
   </div>
