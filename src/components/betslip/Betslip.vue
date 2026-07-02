@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useBetslipStore } from '../../stores/betslip'
 import BetslipItem from './BetslipItem.vue'
+
+// The betslip store holds the selected contracts and their current odds state.
 const store = useBetslipStore()
 </script>
 

@@ -1,7 +1,11 @@
 import { ref, computed, watch, type Ref } from 'vue'
 import type { Match, GameInfo } from '../types'
+
+// Composable that derives the in-play game filter state from a match list.
+// It provides a list of unique game tabs, the currently selected game, and the filtered match list.
 export function useInPlay(matches: Ref<Match[]>) {
   const selectedGame = ref<string>('')
+
   const games = computed((): GameInfo[] => {
     const map = new Map<string, { imageKey: string; count: number }>()
 
@@ -13,12 +17,15 @@ export function useInPlay(matches: Ref<Match[]>) {
         map.set(match.game_name, { imageKey: match.game_image_key, count: 1 })
       }
     }
-    
+
+    // Return sorted game metadata so tabs are stable and predictable.
     return Array.from(map.entries())
       .map(([name, { imageKey, count }]) => ({ name, imageKey, matchCount: count }))
       .sort((a, b) => a.name.localeCompare(b.name))
   })
-  // Pre-select first game alphabetically. Guard keeps selection stable across polls.
+
+  // Pre-select the first available game when data arrives.
+  // This avoids an empty tab state when the component is first mounted.
   watch(
     games,
     (newGames) => {
@@ -29,6 +36,7 @@ export function useInPlay(matches: Ref<Match[]>) {
     { immediate: true },
   )
 
+  // Filter matches based on the selected game tab.
   const filteredMatches = computed(() =>
     matches.value.filter((m) => m.game_name === selectedGame.value),
   )

@@ -2,6 +2,8 @@
 import axe from 'axe-core'
 import { expect } from 'vitest'
 
+// Accessibility assertion helper used by component tests.
+// Uses axe-core to detect accessibility violations and fails the test with a readable summary.
 export async function expectNoA11yViolations(element: Element): Promise<void> {
   const results = await axe.run(element, {
     rules: {

@@ -4,7 +4,9 @@ import { useBetslipStore } from '../../stores/betslip'
 import type { Contract, Match } from '../../types/index.ts'
 const props = defineProps<{ contract: Contract; match: Match }>()
 const store = useBetslipStore()
+// Track whether this odds contract is currently in the betslip.
 const selected = computed(() => store.isSelected(props.contract.id))
+// Use the correct team name for the contract button label.
 const teamLabel = computed(() =>
   props.contract.team === 'home' ? props.match.home_team : props.match.away_team,
 )

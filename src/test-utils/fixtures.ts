@@ -1,5 +1,7 @@
 import type { Contract, Match } from '../types'
 
+// Factory for creating a match fixture in tests.
+// Accepts overrides so individual tests can adjust only the relevant fields.
 export const makeMatch = (overrides: Partial<Match> = {}): Match => ({
   home_team: 'FlyQuest',
   home_score: '1',
@@ -18,7 +20,8 @@ export const makeMatch = (overrides: Partial<Match> = {}): Match => ({
   ...overrides,
 })
 
-// Basketball ×1 · CS:GO ×2 · Dota 2 ×1 — alphabetical: Basketball < CS:GO < Dota 2
+// Pre-defined match collection used to verify filtering and game tab selection.
+// The list is ordered so alphabetical game sorting can be asserted.
 export const makeMatches = (): Match[] => [
   makeMatch({
     home_team: 'FlyQuest',

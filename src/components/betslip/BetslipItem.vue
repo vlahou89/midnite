@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useBetslipStore, type BetslipItem } from '../../stores/betslip'
+
 const props = defineProps<{ item: BetslipItem }>()
+
 const store = useBetslipStore()
+
+// Determine whether this betslip item has moved up/down or remained neutral.
 const direction = computed(() => store.getDirection(props.item.contractId))
+
+// Render a simple visual indicator for odds movement.
 const indicator = computed(() =>
   direction.value === 'up' ? '▲' : direction.value === 'down' ? '▼' : '–',
 )

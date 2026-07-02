@@ -1,16 +1,8 @@
-import type { StorybookConfig } from '@storybook/vue3-vite'
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+import './assets/main.css'
 
-const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(ts|tsx)'],
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-links',
-  ],
-  framework: {
-    name: '@storybook/vue3-vite',
-    options: {},
-  },
-}
-
-export default config
+createApp(App)
+  .use(createPinia())
+  .mount('#app')

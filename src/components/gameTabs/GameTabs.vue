@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { GameInfo } from '../../types'
 
+// The game tab row renders all available game filters and exposes the selected tab.
 defineProps<{ games: GameInfo[]; selectedGame: string }>()
 
+// Emit the selected game name when a tab is clicked.
 defineEmits<{ select: [name: string] }>()
 </script>
 

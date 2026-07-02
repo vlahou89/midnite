@@ -4,7 +4,10 @@ import GameTabs from '../gameTabs/GameTabs.vue'
 import MatchRow from '../matchRow/MatchRow.vue'
 import { useInPlay } from '../../composables/useInPlay.ts'
 import type { Match } from '../../types/index.ts'
+
 const props = defineProps<{ matches: Match[] }>()
+
+// Keep the matches prop reactive by forwarding it as a ref to the composable.
 const { games, selectedGame, filteredMatches } = useInPlay(toRef(props, 'matches'))
 </script>
 

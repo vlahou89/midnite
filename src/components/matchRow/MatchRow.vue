@@ -2,6 +2,7 @@
 import OddsButton from '../oddsButton/OddsButton.vue'
 import type { Match } from '../../types/index.ts'
 
+// MatchRow is responsible for rendering match metadata and the available odds buttons.
 defineProps<{ match: Match }>()
 </script>
 

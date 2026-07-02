@@ -14,19 +14,28 @@ interface ApiResponse {
   containers: any[]
 }
 
+// Holds the API containers response. We only render the in-play container.
 const containers = ref<any[]>([])
+
+// Shared betslip state for updating odds and selection.
 const betslipStore = useBetslipStore()
+
+// Poll interval handle to clear when component unmounts.
 let pollInterval: ReturnType<typeof setInterval>
 
 async function fetchContainers(): Promise<void> {
+  // Use a random fixture endpoint so the demo cycles through sample payloads.
   const n = Math.floor(Math.random() * 5) + 1
+
   try {
     const res = await fetch(`/api-${n}.json`)
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
     const data: ApiResponse = await res.json()
 
     containers.value = data.containers
 
+    // Update odds in the betslip store from the in-play container.
     const inPlay = data.containers.find((c: any) => c.type === 'in-play')
     if (inPlay) {
       betslipStore.updateAllOdds(inPlay.matches.flatMap((m: any) => m.contracts))
@@ -36,11 +45,13 @@ async function fetchContainers(): Promise<void> {
   }
 }
 
+// Compute the current in-play container from the API result.
 const inPlayContainer = computed<InPlayData | null>(
   () => containers.value.find((c: any) => c.type === 'in-play') ?? null,
 )
 
 onMounted(() => {
+  // Fetch once immediately and then poll every 5 seconds.
   fetchContainers()
   pollInterval = setInterval(fetchContainers, 5_000)
 })
